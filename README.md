@@ -14,3 +14,7 @@ Average expected life span ( male and female ):
 http://www20.statcan.gc.ca/tables-tableaux/cansim/csv/01020512-eng.zip
 
 
+Prerequisite:
+
+Must install DBI perl module to run ETL scripts.
+
