@@ -11,18 +11,24 @@ delete @ENV{'IFS', 'CDPATH', 'ENV', 'BASH_ENV'};
 
 
 
-sub main(){
-   my $fh = IO::File->new();
-    if ($fh->open("< ../flatfiles/lifeExpect.csv")) {
+sub extract{
+    my $url= shift or die;
+    my $fh = IO::File->new();
+
+   if ($fh->open("< ". $url)) {
         print <$fh>;
         $fh->close;
     }
 
 }
 
-sub db(){
-    my $dbh = DBI->connect('DBI:mysql:database=test;host=localhost', 'root', '')
+sub db{
+    my $dbh = DBI->connect('DBI:mysql:database=test;host=localhost', '', '')
       or die "Cannot connect: " . $DBI::errstr;
+  #my $sth = $dbh->prepare('SELECT * FROM people WHERE lastname = ?')
+  #             or die "Couldn't prepare statement: " . $dbh->errstr;
+extract("../flatfiles/lifeExpect.csv");
+
 }
 
 db();
