@@ -5,12 +5,51 @@ use Time::localtime;
 use IO::File;
 #Developer Name: Zakeria Hassan <zak.hassan1010@gmail.com>
 #Date: Mar 26, 2014
-use Dialog;
-use ETL;
 
 $ENV{PATH} = "/bin:/usr/bin";
 delete @ENV{'IFS', 'CDPATH', 'ENV', 'BASH_ENV'};
 
+=head
+INSERT INTO `mydb`.`OntarioTopBabyNames`
+(`idOntarioTopBabyNames`,
+`year`,
+`name`,
+`frequency`,
+`gender`)
+VALUES
+(<{idOntarioTopBabyNames: }>,
+<{year: }>,
+<{name: }>,
+<{frequency: }>,
+<{gender: }>);
+
+
+INSERT INTO `mydb`.`PopulationByYearByProvince`
+(`idPopulationByYearByProvince`,
+`province`,
+`year`,
+`pop_count`)
+VALUES
+(<{idPopulationByYearByProvince: }>,
+<{province: }>,
+<{year: }>,
+<{pop_count: }>);
+
+INSERT INTO `mydb`.`LifeExpectency`
+(`idLifeExpectency`,
+`year_from`,
+`year_to`,
+`province`,
+`male_count`,
+`female_count`)
+VALUES
+(<{idLifeExpectency: }>,
+<{year_from: }>,
+<{year_to: }>,
+<{province: }>,
+<{male_count: }>,
+<{female_count: }>);
+=cut
 
 sub loadLifeExpectency{
     my $fh = extract("../flatfiles/lifeExpect.csv");
