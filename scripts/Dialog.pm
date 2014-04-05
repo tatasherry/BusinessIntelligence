@@ -8,7 +8,7 @@ BEGIN{
 
     our $VERSION = 0.1;
     our @ISA = qw (Exporter);
-    our @EXPORT = qw (s_msg, s_check, s_error);
+    our @EXPORT = qw (s_msg s_check s_error);
 
 }
 

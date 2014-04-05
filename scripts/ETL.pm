@@ -10,8 +10,12 @@ BEGIN {
     require Exporter;
     our $VERSION = 0.1;
     our @ISA = qw (Exporter);
-    our @EXPORT = qw (loadBabyNames, loadLifeExpect, loadPopulation);
+    our @EXPORT = qw (loadBabyNames loadLifeExpect loadPopulation);
+    our @EXPORT_OK   = qw($debug);
+
 }
+
+our $debug=0;
 
 sub loadLifeExpect {
     my @batchrows;
@@ -27,7 +31,16 @@ sub loadLifeExpect {
             #print Dumper \@timeat;
 my $male_count   = trim($fields[1]);
 my $female_count = trim($fields[2]);
-my $lifeExpectency = <<SQL;
+
+#Error condition check
+$count++;
+if( ! defined $male_count or $count == 1 ) {
+    next;
+}
+
+
+my $lifeExpectency="";
+$lifeExpectency= <<SQL;
 INSERT INTO `mydb`.`LifeExpectency`
 (`year_from`,
 `year_to`,
@@ -45,11 +58,9 @@ SQL
 #print "INSRT INTO " $fields[0];
 $lifeExpectency =~ s/(?<!\w) //g;
 $lifeExpectency =~ s/\n//g;
-$count++;
-if( length ($male_count ) <= 0 or $count == 1 ) {
-    next;
+if($debug==1){
+    print "$lifeExpectency \n";
 }
-print "$lifeExpectency \n";
 push(@batchrows, $lifeExpectency);
         }
     }
@@ -94,7 +105,9 @@ SQL
 $lifeExpectency =~ s/(?<!\w) //g;
 $lifeExpectency =~ s/\n//g;
 
+if($debug == 1){
 print "$lifeExpectency \n";
+}
 push(@batchrows, $lifeExpectency);
 
     }
@@ -141,15 +154,16 @@ INSERT INTO `mydb`.`PopulationByYearByProvince` (`province`,`year09`,'year10','y
 VALUES ( $province[$i], $year09[$i], $year10[$i], $year11[$i], $year12[$i], $year13[$i] );
 SQL
 
+if($debug==1){
     print $statement;
-    push(@batchrows,$statement);
+}
+push(@batchrows,$statement);
     }
 return @batchrows;
 }
 
 
 
-loadPopulation("../flatfiles/population_byYear_byProvince_byTerritory.csv");
-loadBabyNames("../flatfiles/ontariotopbabynames_male_1917-2010_english.csv",1);
-loadLifeExpect("../flatfiles/lifeExpect.csv");
+
+1;
 
