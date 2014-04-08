@@ -57,7 +57,7 @@ INSERT INTO `test`.`LifeExpectency`
 VALUES
 ($timeat[0],
 $timeat[1],
-'$province',
+$province,
 $male_count,
 $female_count );
 SQL

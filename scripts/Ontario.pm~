@@ -40,3 +40,5 @@ push(@batchrows, $lifeExpectency);
     }
 }
 
+loadBabyNames("../flatfiles/ontariotopbabynames_male_1917-2010_english.csv",1);
+

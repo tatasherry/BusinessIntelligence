@@ -20,10 +20,9 @@ use String::Util 'trim';
 
 =cut
 
-sub loadPopulation {
-    my @batchrows=();
+sub main{
     my $count = 0 ;
-    my $file= shift or die "File not found";
+    my $file= $ARGV[0] or die "File not found";
     open (my $fh, '<', $file) or die "Could not open '$file' $!\n";
     
     my @province=();
@@ -53,24 +52,12 @@ sub loadPopulation {
     for(my $i= 0; $i < scalar @province; $i++) {
 
 my $statement = <<SQL;
-INSERT INTO `test`.`PopulationByYearByProvince` 
-(`province`,
-`year09`,
-`year10`,
-`year11`,
-`year12`,
-`year13`)
-VALUES 
-( $province[$i],
- $year09[$i],
- $year10[$i], 
-$year11[$i], 
-$year12[$i], 
-$year13[$i] );
+INSERT INTO `mydb`.`PopulationByYearByProvince` (`province`,`year09`,'year10','year11','year12','year13')
+VALUES ( $province[$i], $year09[$i], $year10[$i], $year11[$i], $year12[$i], $year13[$i] );
 SQL
 
- print $statement;
- push(@batchrows, $statement);
+    print $statement;
+
 }
 
 
@@ -98,4 +85,5 @@ print Dumper \@year13;
 
 }
 
+main("../flatfiles/lifeExpect.csv");
 

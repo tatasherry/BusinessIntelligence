@@ -52,8 +52,20 @@ sub main{
     for(my $i= 0; $i < scalar @province; $i++) {
 
 my $statement = <<SQL;
-INSERT INTO `mydb`.`PopulationByYearByProvince` (`province`,`year09`,'year10','year11','year12','year13')
-VALUES ( $province[$i], $year09[$i], $year10[$i], $year11[$i], $year12[$i], $year13[$i] );
+INSERT INTO `test`.`PopulationByYearByProvince` 
+(`province`,
+`year09`,
+`year10`,
+`year11`,
+`year12`,
+`year13`)
+VALUES 
+( $province[$i], 
+$year09[$i], 
+$year10[$i], 
+$year11[$i], 
+$year12[$i], 
+$year13[$i] );
 SQL
 
     print $statement;
