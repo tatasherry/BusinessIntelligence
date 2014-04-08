@@ -1,0 +1,13 @@
+SELECT * FROM test.City LIMIT 5;
+SELECT * FROM test.Province LIMIT 5;
+SELECT * FROM test.Store LIMIT 5;
+SELECT * FROM test.Manager LIMIT 5;
+SELECT * FROM test.Product LIMIT 5;
+SELECT * FROM test.ProductGroup LIMIT 5;
+SELECT * FROM test.Sales LIMIT 5;
+SELECT * FROM test.Customer LIMIT 5;
+SELECT * FROM test.AgeGroup LIMIT 5;
+SELECT * FROM test.PopulationByYearByProvince LIMIT 5;
+SELECT * FROM test.OntarioTopBabyNames LIMIT 5;
+SELECT * FROM test.LifeExpectency LIMIT 5;
+

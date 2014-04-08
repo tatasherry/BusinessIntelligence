@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+#INSTALLING DATABASE DEPENDENCY
+sudo cpan DBI
+#INSTALLING MYSQL DRIVER FOR PERL
+sudo cpan DBD::mysql
+
+

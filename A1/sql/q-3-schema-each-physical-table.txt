@@ -1,0 +1,134 @@
+mysql> DESCRIBE test.City;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| city_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(45) | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.Province;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| province_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| city_id     | int(11)     | YES  | MUL | NULL    |                |
+| name        | varchar(45) | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.Store;
++-------------+---------+------+-----+---------+----------------+
+| Field       | Type    | Null | Key | Default | Extra          |
++-------------+---------+------+-----+---------+----------------+
+| store_id    | int(11) | NO   | PRI | NULL    | auto_increment |
+| manager_id  | int(11) | NO   | MUL | NULL    |                |
+| province_id | int(11) | NO   | MUL | NULL    |                |
++-------------+---------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.Manager;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| idManager | int(11)     | NO   | PRI | NULL    |       |
+| name      | varchar(45) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.Product;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| product_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| product_name | varchar(45) | YES  |     | NULL    |                |
+| price        | float       | YES  |     | NULL    |                |
+| initialcost  | float       | YES  |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> DESCRIBE  test.ProductGroup;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| productGroup_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| product_name    | varchar(45) | YES  |     | NULL    |                |
+| product_id      | int(11)     | YES  | MUL | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.Sales;
++-----------------+---------+------+-----+---------+----------------+
+| Field           | Type    | Null | Key | Default | Extra          |
++-----------------+---------+------+-----+---------+----------------+
+| sale_id         | int(11) | NO   | PRI | NULL    | auto_increment |
+| store_id        | int(11) | NO   | MUL | NULL    |                |
+| customer_id     | int(11) | NO   | MUL | NULL    |                |
+| productgroup_id | int(11) | NO   | MUL | NULL    |                |
+| qty             | int(11) | NO   |     | NULL    |                |
+| year            | int(11) | NO   |     | NULL    |                |
++-----------------+---------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.Customer;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| customer_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| customer_name | varchar(45) | NO   |     | NULL    |                |
+| dob           | date        | NO   |     | NULL    |                |
+| sex           | bit(1)      | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.AgeGroup;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| ageGroup_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(45) | YES  |     | NULL    |                |
+| begin       | int(11)     | YES  |     | NULL    |                |
+| end         | int(11)     | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.PopulationByYearByProvince;
++------------------------------+-------------+------+-----+---------+----------------+
+| Field                        | Type        | Null | Key | Default | Extra          |
++------------------------------+-------------+------+-----+---------+----------------+
+| idPopulationByYearByProvince | int(11)     | NO   | PRI | NULL    | auto_increment |
+| province                     | varchar(45) | NO   |     | NULL    |                |
+| year09                       | int(11)     | NO   |     | NULL    |                |
+| year10                       | int(11)     | NO   |     | NULL    |                |
+| year11                       | int(11)     | NO   |     | NULL    |                |
+| year12                       | int(11)     | NO   |     | NULL    |                |
+| year13                       | int(11)     | NO   |     | NULL    |                |
++------------------------------+-------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.OntarioTopBabyNames;
++-----------------------+-------------+------+-----+---------+----------------+
+| Field                 | Type        | Null | Key | Default | Extra          |
++-----------------------+-------------+------+-----+---------+----------------+
+| idOntarioTopBabyNames | int(11)     | NO   | PRI | NULL    | auto_increment |
+| year                  | int(11)     | NO   |     | NULL    |                |
+| name                  | varchar(45) | NO   |     | NULL    |                |
+| frequency             | int(11)     | NO   |     | NULL    |                |
+| gender                | bit(1)      | NO   |     | NULL    |                |
++-----------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> DESCRIBE  test.LifeExpectency;
++------------------+-------------+------+-----+---------+----------------+
+| Field            | Type        | Null | Key | Default | Extra          |
++------------------+-------------+------+-----+---------+----------------+
+| idLifeExpectency | int(11)     | NO   | PRI | NULL    | auto_increment |
+| year_from        | int(11)     | NO   |     | NULL    |                |
+| year_to          | int(11)     | NO   |     | NULL    |                |
+| province         | varchar(45) | NO   |     | NULL    |                |
+| male_count       | int(11)     | NO   |     | NULL    |                |
+| female_count     | int(11)     | NO   |     | NULL    |                |
++------------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+

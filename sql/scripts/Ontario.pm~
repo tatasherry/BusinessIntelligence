@@ -1,0 +1,44 @@
+sub loadBabyNames{
+    my @batchrows=();
+    my $count = 0 ;
+#    my $file= shift or die "File not found";
+    my ($file,$gender) = @_;
+
+    open (my $fh, '<', $file) or die "Could not open '$file' $!\n";
+    while(my $line =<$fh>){
+        $count++;
+            if ($count <= 2 ) {
+                next;
+            }
+        chomp $line;
+        my @fields = split "," , $line ;
+        
+my $year = trim($fields[0]);
+my $name = trim($fields[1]);
+my $freq = trim($fields[2]);
+
+
+my $lifeExpectency = <<SQL;
+INSERT INTO `test`.`OntarioTopBabyNames`
+(`year`,
+`name`,
+`frequency`,
+`gender`)
+VALUES
+($year,
+ $name,
+ $freq,
+ $gender);
+SQL
+
+$lifeExpectency =~ s/(?<!\w) //g;
+$lifeExpectency =~ s/\n//g;
+
+print "$lifeExpectency \n";
+push(@batchrows, $lifeExpectency);
+
+    }
+}
+
+loadBabyNames("../flatfiles/ontariotopbabynames_male_1917-2010_english.csv",1);
+
