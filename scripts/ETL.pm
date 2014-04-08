@@ -41,7 +41,7 @@ if( ! defined $male_count or $count == 1 ) {
 
 my $lifeExpectency="";
 $lifeExpectency= <<SQL;
-INSERT INTO `mydb`.`LifeExpectency`
+INSERT INTO `test`.`LifeExpectency`
 (`year_from`,
 `year_to`,
 `province`,
@@ -90,14 +90,14 @@ my $freq = trim($fields[2]);
 
 
 my $lifeExpectency = <<SQL;
-INSERT INTO `mydb`.`OntarioTopBabyNames`
+INSERT INTO `test`.`OntarioTopBabyNames`
 (`year`,
 `name`,
 `frequency`,
 `gender`)
 VALUES
 ($year,
- $name,
+ '$name',
  $freq,
  $gender);
 SQL
@@ -150,8 +150,8 @@ sub loadPopulation {
     for(my $i= 0; $i < scalar @province; $i++) {
 
 my $statement = <<SQL;
-INSERT INTO `mydb`.`PopulationByYearByProvince` (`province`,`year09`,'year10','year11','year12','year13')
-VALUES ( $province[$i], $year09[$i], $year10[$i], $year11[$i], $year12[$i], $year13[$i] );
+INSERT INTO `test`.`PopulationByYearByProvince` (`province`,`year09`,'year10','year11','year12','year13')
+VALUES ( '$province[$i]', $year09[$i], $year10[$i], $year11[$i], $year12[$i], $year13[$i] );
 SQL
 
 if($debug==1){

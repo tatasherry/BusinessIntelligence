@@ -16,13 +16,16 @@ sub db{
     my $upass='';
     my $dbh = DBI->connect("DBI:mysql:database=$db_name;host=localhost", $uname, $upass) or die "Cannot connect: " . $DBI::errstr;
 
-     foreach (@batch) {
-            #print "$_\n";
-            Dialog::s_check();
-            print "Added 1 Row \n";
+    foreach (@batch) {
+    print "$_\n";
+    my $sth = $dbh->prepare($_) or die "Couldn't prepare statement: " . $dbh->errstr;
+    $sth->execute();
+    Dialog::s_check();
+    print "Added 1 Row \n";
     }
-	# my $sth = $dbh->prepare('SELECT * FROM people WHERE lastname = ?')
-	#             or die "Couldn't prepare statement: " . $dbh->errstr;
+
+    $dbh->disconnect;
+
 #	my $sth = $dbh->prepare("LOAD DATA LOCAL INFILE 'lifeExpect.csv' INTO TABLE lifeExpect IGNORE 1 LINES (year, male, female) ") or die(" Can not load CSV into database. ");
 Dialog::s_msg("Added ".scalar(@batch)." rows in batch process");
 }
