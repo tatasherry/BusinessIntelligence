@@ -163,6 +163,35 @@ mysql> SELECT * FROM test.LifeExpectency LIMIT 5;
 5 rows in set (0.00 sec)
 
 
+mysql> SELECT * FROM test.Definition;
++----+---------------------+-----------------+-----------------------------------------------------------------------------------------------+
+| id | table_name          | column_name     | description                                                                                   |
++----+---------------------+-----------------+-----------------------------------------------------------------------------------------------+
+|  1 | Sales               | sale_id         |  A unique number given to identify a single sale of any quantity of product                   |
+|  2 | Sales               | customer_id     |  The customer id of a given customer who purchases an product                                 |
+|  3 | Sales               | store_id        | Indentifier number of a specific store that processed the sale.                               |
+|  4 | Sales               | productgroup_id | Products are divided into groups and in this case I am categorizing them into product groups. |
+|  5 | Sales               | qty             | Tracking the number of items sold for a given sale. To be used for calculating revenue.       |
+|  6 | Sales               | year            | This is when the sale occurred.                                                               |
+|  7 | Store               | manager_id      | The manager that approved the sale.                                                           |
+|  8 | Store               | province_id     | The location where the sale occurred,                                                         |
+|  9 | Province            | city_id         | The city where the sale occurred                                                              |
+| 10 | Customer            | customer_name   | The customer who bought the item                                                              |
+| 11 | Customer            | dob             | The customers date of birth                                                                   |
+| 12 | Customer            | sex             | The customers gender 0 - male and  1 - female.                                                |
+| 13 | AgeGroup            | begin           | To have a range of when an agegroup starts I'm using this begin column to track that          |
+| 14 | AgeGroup            | end             | To have a range of when an agegroup ends I'm using this 'end' column to track that            |
+| 15 | OntarioTopBabyNames | gender          | This is reference tables and I track gender by using  0 - male and  1 - female.               |
+| 16 | OntarioTopBabyNames | frequency       | The number of times a name occurs                                                             |
+| 17 | OntarioTopBabyNames | year            | The year that the person was named                                                            |
+| 18 | LifeExpectency      | year_from       | The age when it started                                                                       |
+| 19 | LifeExpectency      | year_to         | The age when it ends                                                                          |
+| 20 | LifeExpectency      | male_count      | number of people that where male                                                              |
+| 21 | LifeExpectency      | female_count    | number of people that where female                                                            |
++----+---------------------+-----------------+-----------------------------------------------------------------------------------------------+
+21 rows in set (0.00 sec)
+
+
 
 
 */

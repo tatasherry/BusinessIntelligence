@@ -131,4 +131,15 @@ mysql> DESCRIBE  test.LifeExpectency;
 +------------------+-------------+------+-----+---------+----------------+
 6 rows in set (0.00 sec)
 
+mysql> desc Definition;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| table_name  | varchar(45)  | NO   |     | NULL    |                |
+| column_name | varchar(45)  | NO   |     | NULL    |                |
+| description | varchar(255) | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
 

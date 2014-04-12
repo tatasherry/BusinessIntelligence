@@ -303,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `test`.`Definition`
 (   `id` INT NOT NULL AUTO_INCREMENT,
     `table_name` VARCHAR(45) NOT NULL,
     `column_name` VARCHAR(45) NOT NULL,
-    `description` VARCHAR(45) NOT NULL
+    `description` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

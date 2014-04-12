@@ -1,0 +1,32 @@
+Questions to Answer:
+
+	1.	 Which cities in Ontario should we target to open retail stores. 
+	2.	 Which names will be the most important for each age group
+	3.	 Sales volumes by store, product and product group
+	4.	 Revenue by store, product and product group
+	5.	 Profit by store, product and product group
+
+For this assignment you will do the following:
+
+	1.	Build a set of business requirements and a logical model.  This is a written part of the assignment.  Build this as if you are talking to a set of business sponsors for the system.  Include any additional business questions, the ones provided and a logical model.
+	2.	Define a set of reference tables which are based off of the government information provided.  You will need to write ETL scripts to get the data in your data warehouse in a more usable format than what is provided.
+	3.	Define a good set of dimension tables with appropriate attributes.  This would surely include a dimension table for products and stores.
+	4.	Define the sales fact table which will be used to answer the questions above, plus any additional business questions you introduced.
+	5.	Define a definitions table where all your assumptions and definitions are stored so that it is easy to understand what assumptions you are using.
+
+
+Items to Check off:
+
+What you will hand in for assignment #1 :
+
+	1.	A brief report outlining the following :
+		a.	Product line for your company
+		b.	Business questions you plan to answer with this DW system
+		c.	Data Model you are implementing
+	2.	The schema of each of the physical tables you create through SQL
+	3.	Brief data sampling from each table through SQL ( 5-10 rows is fine )
+	4.	Full print out of your definitions table through SQL
+	5.	Brief data sampling from each of the reference tables through SQL ( 5-10 rows is fine )
+	6.	ETL scripts which you created to get the data from the government sources into your reference tables.
+
+
